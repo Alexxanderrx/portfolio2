@@ -1,13 +1,20 @@
 'use client';
 import { Button } from 'flowbite-react';
 import './App.css'
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar } from 'flowbite-react';
-
+import { BrowserView, MobileView } from 'react-device-detect';
 import Atropos from 'atropos/react';
 import 'atropos/css'
 function App() {
-  // const [count, setCount] = useState(0)
+  const [truncate, setTruncate] = useState("truncate")
+
+  function openTru() {
+    setTruncate("truncate")
+    if (truncate == "truncate") {
+      setTruncate("")
+    }
+  }
 
   return (
     <>
@@ -15,7 +22,7 @@ function App() {
         <Navbar
           fluid
           rounded
-          className='md:h-[60px] pt-4 md:px-16'
+          className='md:h-[60px] pt-4 md:px-16 px-6'
         >
           <Navbar.Brand href="https://flowbite-react.com">
             {/* <img
@@ -29,13 +36,13 @@ function App() {
           </Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse>
-            <Navbar.Link
+            {/* <Navbar.Link
               href="#"
             >
               <p>
                 Home
               </p>
-            </Navbar.Link>
+            </Navbar.Link> */}
             <Navbar.Link
               href="#about"
             >
@@ -43,22 +50,22 @@ function App() {
                 About
               </p>
             </Navbar.Link>
-            <Navbar.Link href="#">
+            <Navbar.Link href="#services">
               Services
             </Navbar.Link>
             <Navbar.Link href="#portfolio">
               Portfolio
             </Navbar.Link>
-            <Navbar.Link href="#">
+            {/* <Navbar.Link href="#">
               Contact
-            </Navbar.Link>
+            </Navbar.Link> */}
           </Navbar.Collapse>
         </Navbar>
         <div className=' h-[500px] w-full  flex justify-center items-center overflow-hidden  bg-[#d6d6d6]'>
-          <div className='pl-16  w-full h-full flex justify-start items-center'>
-            <div className=' flex flex-col justify-between items-starts h-[250px] w-full'>
-              <p className='font-bold text-3xl raleway'>Hi, I am</p>
-              <p className='font-bold text-5xl raleway'>Víctor Morales</p>
+          <div className='md:pl-16 pl-8  w-full h-full flex justify-start items-center'>
+            <div className=' flex flex-col justify-between items-starts h-[250px] md:w-full w-[93%]'>
+              <p className='font-bold md:text-3xl raleway text-2xl'>Hi, I am</p>
+              <p className='font-bold md:text-5xl raleway text-4xl'>Víctor Morales</p>
               <p className='font-bold text-gray-500 raleway'>FullStack Developer / Computer and Information Technology Technician</p>
               <div className='flex  w-[110px] justify-between'>
                 <a target='_blank' href='https://github.com/Alexxanderrx' className='p-2 bg-[#c4c4c4] hover:bg-[#9f9f9f] shadow-md'>
@@ -79,12 +86,12 @@ function App() {
           </div> */}
         </div>
         {/* </Atropos> */}
-        <div id='about' className='text-white md:h-[260px] h-[550px] w-full bg-[#1d1d1d] flex justify-between items-starts flex-col p-12'>
-          <p>ABOUT ME:</p>
-          <p>Nulla in velit a metus rhoncus tempus. Nulla congue nulla vel sem varius finibus. Sed ornare sit amet lorem sed viverra. In vel urna quis libero viverra facilisis ut ac est. Morbi commodo, eros in dignissim tempus, lacus odio rutrum augue, in semper sem magna quis tellus. Etiam enim erat, suscipit eu semper a, dictum sit amet elit. Nunc egestas nisi eget enim gravida facilisis. Pellentesque laoreet varius turpis vel pharetra. Ut ante justo, consequat vitae elementum tempor, accumsan nec eros. </p>
-          <a href='#' className=' border-x-2 flex justify-center items-center h-[34px] w-[150px] hover:border-2'>READ MORE</a>
+        <div id='about' className='text-white  w-full bg-[#1d1d1d] flex justify-between items-starts flex-col p-12'>
+          <p className='pb-4 raleway font-semibold'>ABOUT ME:</p>
+          <p className={`${truncate} raleway`}>My name is Víctor Alexander Morales Lucero, I'm a web developer from Lima, Perú. I am a graduate of computer science and IT degree from the Jose Pardo Higher Technological Institute and a graduate of the Full Stack Web Development degree at the Funval Fundet International Institute.  </p>
+          <div onClick={openTru} className='mt-4 border-x-2 flex justify-center items-center h-[34px] w-[150px] hover:border-2 font-semibold cursor-pointer'>READ MORE</div>
         </div>
-        <div className=' md:h-[550px] h-[800px] w-full bg-[#d6d6d6] flex justify-center items-center'>
+        <div id='services' className=' py-20 w-full bg-[#d6d6d6] flex justify-center items-center'>
           <div className='flex w-[90%] h-fit flex-wrap justify-center gap-20 '>
             <div className='w-[500px] relative'>
               <img className='' alt='desing.png' src='/desing.png' />
@@ -94,203 +101,319 @@ function App() {
             <div className='w-[500px] relative'>
               <img className='' alt='development.png' src='/development.png' />
               <b className='absolute top-[20px] left-10 text-xl'>D E V E L O P M E N T</b>
-              <p>I can design the site based on your needs and suggestions. I can also design the site from scratch and consult you during the job.</p>
+              <p>I can implement efficient and reliable information systems in web environments..</p>
             </div>
             <div className='w-[500px] relative'>
               <img className='' alt='maintenance.png' src='/maintenance.png' />
               <b className='absolute top-[20px] left-10 text-xl'>M A I N T E N A N C E</b>
-              <p>I can design the site based on your needs and suggestions. I can also design the site from scratch and consult you during the job.</p>
+              <p>I can provide technical support for computer centers. Act professionally with leadership and foresight.</p>
             </div>
           </div>
         </div>
-        <div className='border md:h-[3000px] h-[1500px] w-full bg-[#d6d6d6] flex flex-col justify-start items-center'>
-          <div id='portfolio' className='my-10 h-[40px] w-[180px] border-4 border-black text-xl raleway font-bold flex justify-center items-center'>
+        <div className='  w-full bg-[#d6d6d6] flex flex-col justify-start items-center'>
+          <div id='portfolio' className='mb-20 h-[40px] w-[180px] border-4 border-black text-xl raleway font-bold flex justify-center items-center'>
             P O R F O L I O
           </div>
-          <section className=' flex w-full justify-center px-20'>
-            <div className=' w-[40%]'>
-              <Atropos className="my-atropos "
-                activeOffset={40}
-                shadowScale={0.9}>
-                <a href='https://alexxanderrx.github.io/New_repositoriy_01/' target='_blank'><img className='border-2 border-black' alt='blog.gif' src='/blog.gif' /></a>
-              </Atropos>
-            </div>
-            <div className=' flex flex-col justify-around items-center px-8 py-[2%] w-[40%]'>
-              <p>A simple blog of a recipe.</p>
-              <div className='flex  w-full justify-center gap-6'>
-                <div className=' text-center'>
-                  <img className='w-[50px]' alt='html5.svg' src='/html5.svg' />
-                  <p>HTML5</p>
-                </div>
-                <div className=' text-center'>
-                  <img className='w-[50px]' alt='css3.svg' src='/css3.svg' />
-                  <p>CSS3</p>
+          <div>
+            <section className=' flex md:flex-row flex-col w-full justify-center items-center  px-10 md:px-20'>
+              <div className=' md:w-[45%] w-full'>
+                <BrowserView>
+                  <Atropos className="my-atropos "
+                    activeOffset={40}
+                    shadowScale={0.9}>
+                    <a href='https://alexxanderrx.github.io/New_repositoriy_01/' target='_blank'><img className='border-2 border-black' alt='blog.gif' src='/blog.gif' /></a>
+                  </Atropos>
+                </BrowserView>
+                <MobileView>
+                  <a href='https://alexxanderrx.github.io/New_repositoriy_01/' target='_blank'><img className='border-2 border-black' alt='blog.gif' src='/blog.gif' /></a>
+                </MobileView>
+              </div>
+
+              <div className=' md:visible collapse flex flex-col justify-around items-center md:px-8 md:py-[2%] w-0 h-0 md:h-full md:w-[45%] md:gap-6'>
+                <p>A simple blog of a recipe.</p>
+                <div className='flex  w-full justify-center md:gap-6'>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='html5.svg' src='/html5.svg' />
+                    <p>HTML5</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='css3.svg' src='/css3.svg' />
+                    <p>CSS3</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
 
-          <section className=' flex w-full justify-center px-20'>
-            <div className=' flex flex-col justify-around items-center px-8 py-[2%] w-[40%]'>
-              <p>A little page that calculates your age based in the day that you were born.</p>
-              <div className='flex  w-full justify-center gap-6'>
-                <div className=' text-center'>
-                  <img className='w-[50px]' alt='html5.svg' src='/html5.svg' />
-                  <p>HTML5</p>
-                </div>
-                <div className=' text-center'>
-                  <img className='w-[50px]' alt='css3.svg' src='/css3.svg' />
-                  <p>CSS3</p>
-                </div>
-                <div className='flex flex-col items-center justify-between'>
-                  <img className='w-[50px]' alt='js.svg' src='/js.svg' />
-                  <p>JAVASCRIPT</p>
+            <section className=' flex md:flex-row flex-col w-full justify-center items-center  px-10 md:px-20'>
+              <div className='md:visible collapse flex flex-col justify-around items-center md:px-8 md:py-[2%] w-0 h-0  md:w-[45%] md:gap-6'>
+                <p>App that calculates your age based in the day that you were born.</p>
+                <div className='flex  w-full justify-center gap-6'>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='html5.svg' src='/html5.svg' />
+                    <p>HTML5</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='css3.svg' src='/css3.svg' />
+                    <p>CSS3</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='js.svg' src='/js.svg' />
+                    <p>JAVASCRIPT</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className=' w-[40%]'>
-              <Atropos className="my-atropos "
-                activeOffset={40}
-                shadowScale={0.9}>
-                <a href='https://alexxanderrx.github.io/CalcularEdad.github.io/' target='_blank'><img className='border-2 border-black' alt='calcu.gif' src='/calcu.gif' /></a>
-              </Atropos>
-            </div>
-          </section>
+              <div className=' md:w-[45%] h-fit w-full'>
+                <BrowserView>
+                  <Atropos className="my-atropos "
+                    activeOffset={40}
+                    shadowScale={0.9}>
+                    <a href='https://alexxanderrx.github.io/CalcularEdad.github.io/' target='_blank'><img className='border-2 border-black' alt='calcu.gif' src='/calcu.gif' /></a>
+                  </Atropos>
+                </BrowserView>
+                <MobileView>
+                  <a href='https://alexxanderrx.github.io/CalcularEdad.github.io/' target='_blank'><img className='border-2 border-black' alt='calcu.gif' src='/calcu.gif' /></a>
+                </MobileView>
+              </div>
+            </section>
 
-          <section className=' flex w-full justify-center px-20'>
-            <div className=' w-[40%]'>
-              <Atropos className="my-atropos "
-                activeOffset={40}
-                shadowScale={0.9}
-                onEnter={() => console.log('Enter')}
-                onLeave={() => console.log('Leave')}
-                onRotate={(x, y) => console.log('Rotate', x, y)}>
-                <a href='https://alexxanderrx.github.io/TipSelector/' target='_blank'><img className='border-2 border-black' alt='splitter.gif' src='/splitter.gif' /></a>
-              </Atropos>
-            </div>
-            <div className=' flex flex-col justify-around items-center px-8 py-[2%] w-[40%]'>
-              <p>A tip calculator that allows users to calculate the amount of tip and total to pay per person in a shared bill..</p>
-              <div className='flex w-full justify-center gap-6'>
-                <div className=' text-center'>
-                  <img className='w-[50px]' alt='html5.svg' src='/html5.svg' />
-                  <p>HTML5</p>
-                </div>
-                <div className=' text-center'>
-                  <img className='w-[50px]' alt='css3.svg' src='/css3.svg' />
-                  <p>CSS3</p>
-                </div>
-                <div className='flex flex-col items-center justify-between'>
-                  <img className='w-[50px]' alt='js.svg' src='/js.svg' />
-                  <p>JAVASCRIPT</p>
+            <section className=' flex md:flex-row flex-col w-full justify-center items-center  px-10 md:px-20'>
+              <div className=' md:w-[45%] w-full'>
+                <BrowserView>
+                  <Atropos className="my-atropos "
+                    activeOffset={40}
+                    shadowScale={0.9}>
+                    <a href='https://alexxanderrx.github.io/TipSelector/' target='_blank'><img className='border-2 border-black' alt='splitter.gif' src='/splitter.gif' /></a>
+                  </Atropos>
+                </BrowserView>
+                <MobileView>
+                  <a href='https://alexxanderrx.github.io/TipSelector/' target='_blank'><img className='border-2 border-black' alt='splitter.gif' src='/splitter.gif' /></a>
+                </MobileView>
+              </div>
+              <div className='md:visible collapse flex flex-col justify-around items-center md:px-8 md:py-[2%] w-0 h-0  md:w-[45%] md:gap-6'>
+                <p>A tip calculator that allows users to calculate the amount of tip and total to pay per person in a shared bill.</p>
+                <div className='flex w-full justify-center gap-6'>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='html5.svg' src='/html5.svg' />
+                    <p>HTML5</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='css3.svg' src='/css3.svg' />
+                    <p>CSS3</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='js.svg' src='/js.svg' />
+                    <p>JAVASCRIPT</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
 
-          <section className=' flex w-full justify-center px-20'>
-            <div className=' flex flex-col justify-around items-center px-8 py-[2%] w-[40%]'>
-              <p>A little page that calculates your age based in the day that you were born.</p>
-              <div className='flex  w-full justify-center gap-6'>
-                <div className=' text-center'>
-                  <img className='w-[50px]' alt='html5.svg' src='/html5.svg' />
-                  <p>HTML5</p>
-                </div>
-                <div className=' text-center'>
-                  <img className='w-[50px]' alt='css3.svg' src='/css3.svg' />
-                  <p>CSS3</p>
-                </div>
-                <div className='flex flex-col items-center justify-between'>
-                  <img className='w-[50px]' alt='js.svg' src='/js.svg' />
-                  <p>JAVASCRIPT</p>
+            <section className=' flex md:flex-row flex-col w-full justify-center items-center  px-10 md:px-20'>
+              <div className='md:visible collapse flex flex-col justify-around items-center md:px-8 md:py-[2%] w-0 h-0  md:w-[45%] md:gap-6'>
+                <p>Web app that allows you to search for a hotel based on the location and number of people.</p>
+                <div className='flex  w-full justify-center gap-6'>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='html5.svg' src='/html5.svg' />
+                    <p>HTML5</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='css3.svg' src='/css3.svg' />
+                    <p>CSS3</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='js.svg' src='/js.svg' />
+                    <p>JAVASCRIPT</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='react.svg' src='/react.svg' />
+                    <p>REACT</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='vite.svg' src='/vite.svg' />
+                    <p>VITE</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className=' w-[40%]'>
-              <Atropos className="my-atropos "
-                activeOffset={40}
-                shadowScale={0.9}>
-                <a href='https://alexxanderrx.github.io/Windbnb_project/' target='_blank'><img className='border-2 border-black' alt='windbnb.gif' src='/windbnb.gif' /></a>
-              </Atropos>
-            </div>
-          </section>
-
-          <section className=' flex w-full justify-center px-20'>
-            <div className=' w-[40%]'>
-              <Atropos className="my-atropos "
-                activeOffset={40}
-                shadowScale={0.9}>
-                <a href='https://poke-app-weld.vercel.app/' target='_blank'><img className='border-2 border-black' alt='pokegif.gif' src='/pokegif.gif' /></a>
-              </Atropos>
-            </div>
-            <div className=' flex flex-col justify-around items-center py-[2%] w-[40%]'>
-              <p>A simple blog of a recipe.</p>
-              <div className='flex  w-full justify-center gap-6'>
-                <div className=' text-center'>
-                  <img className='w-[50px]' alt='html5.svg' src='/html5.svg' />
-                  <p>HTML5</p>
-                </div>
-                <div className=' text-center'>
-                  <img className='w-[50px]' alt='css3.svg' src='/css3.svg' />
-                  <p>CSS3</p>
-                </div>
-
+              <div className=' md:w-[45%] w-full'>
+                <BrowserView>
+                  <Atropos className="my-atropos "
+                    activeOffset={40}
+                    shadowScale={0.9}>
+                    <a href='https://alexxanderrx.github.io/Windbnb_project/' target='_blank'><img className='border-2 border-black' alt='windbnb.gif' src='/windbnb.gif' /></a>
+                  </Atropos>
+                </BrowserView>
+                <MobileView>
+                  <a href='https://alexxanderrx.github.io/Windbnb_project/' target='_blank'><img className='border-2 border-black' alt='windbnb.gif' src='/windbnb.gif' /></a>
+                </MobileView>
               </div>
-            </div>
-          </section>
+            </section>
 
-          <section className=' flex w-full justify-center px-20'>
-
-            <div className=' flex flex-col justify-around items-center px-8 py-[2%] w-[40%]'>
-              <p>A little page that calculates your age based in the day that you were born.</p>
-              <div className='flex  w-full justify-center gap-6'>
-                <div className=' text-center'>
-                  <img className='w-[50px]' alt='html5.svg' src='/html5.svg' />
-                  <p>HTML5</p>
-                </div>
-                <div className=' text-center'>
-                  <img className='w-[50px]' alt='css3.svg' src='/css3.svg' />
-                  <p>CSS3</p>
-                </div>
-                <div className='flex flex-col items-center justify-between'>
-                  <img className='w-[50px]' alt='js.svg' src='/js.svg' />
-                  <p>JAVASCRIPT</p>
+            <section className=' flex md:flex-row flex-col w-full justify-center items-center  px-10 md:px-20'>
+              <div className=' md:w-[45%] w-full'>
+                <BrowserView>
+                  <Atropos className="my-atropos "
+                    activeOffset={40}
+                    shadowScale={0.9}>
+                    <a href='https://poke-app-weld.vercel.app/' target='_blank'><img className='border-2 border-black' alt='pokegif.gif' src='/pokegif.gif' /></a>
+                  </Atropos>
+                </BrowserView>
+                <MobileView>
+                  <a href='https://poke-app-weld.vercel.app/' target='_blank'><img className='border-2 border-black' alt='pokegif.gif' src='/pokegif.gif' /></a>
+                </MobileView>
+              </div>
+              <div className=' md:visible collapse flex flex-col justify-around items-center md:px-8 md:py-[2%] w-0 h-0  md:w-[45%] md:gap-6'>
+                <p>Pokeapp that consumes an api.</p>
+                <div className='grid grid-cols-3  w-full justify-center gap-6'>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='html5.svg' src='/html5.svg' />
+                    <p>HTML5</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='css3.svg' src='/css3.svg' />
+                    <p>CSS3</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='js.svg' src='/js.svg' />
+                    <p>JAVASCRIPT</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='react.svg' src='/react.svg' />
+                    <p>REACT</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='nextjs.png' src='/nextjs.png' />
+                    <p>NEXT.js</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='nextjs.png' src='/api.png' />
+                    <p>API</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className=' w-[40%]'>
-              <Atropos className="my-atropos "
-                activeOffset={40}
-                shadowScale={0.9}>
-                <a href='https://weather-app-ivory-one.vercel.app/' target='_blank'><img className='border-2 border-black' alt='wheaterApp.jpg' src='/WAgif.gif' /></a>
-              </Atropos>
-            </div>
-          </section>
+            </section>
 
-          <section className=' flex w-full justify-center px-20'>
-            <div className=' w-[40%]'>
-              <Atropos className="my-atropos "
-                activeOffset={40}
-                shadowScale={0.9}>
-                <a href='https://mp01hosting.000webhostapp.com/' target='_blank'><img className='' alt='university.jpg' src='/university.jpg' /></a>
-              </Atropos>
-            </div>
-            <div className=' flex flex-col justify-around items-center py-[2%] w-[40%]'>
-              <p>A simple blog of a recipe.</p>
-              <div className='flex  w-full justify-center gap-6'>
-                <div className=' text-center'>
-                  <img className='w-[50px]' alt='html5.svg' src='/html5.svg' />
-                  <p>HTML5</p>
+            <section className=' flex md:flex-row flex-col w-full justify-center items-center  px-10 md:px-20'>
+              <div className=' md:visible collapse flex flex-col justify-around items-center md:px-8 md:py-[2%] w-0 h-0  md:w-[45%] md:gap-6'>
+                <p>App to know the weather in differents countries.</p>
+                <div className='grid grid-cols-4  w-full justify-center gap-6'>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='html5.svg' src='/html5.svg' />
+                    <p>HTML5</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='css3.svg' src='/css3.svg' />
+                    <p>CSS3</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='js.svg' src='/js.svg' />
+                    <p>JAVASCRIPT</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='react.svg' src='/react.svg' />
+                    <p>REACT</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='nextjs.png' src='/nextjs.png' />
+                    <p>NEXT.js</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='nextjs.png' src='/api.png' />
+                    <p>API</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='bootstrap5.png' src='/bootstrap5.png' />
+                    <p>BOOTSTRAP5</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='vercel.png' src='/vercel.png' />
+                    <p>VERCEL</p>
+                  </div>
                 </div>
-                <div className=' text-center'>
-                  <img className='w-[50px]' alt='css3.svg' src='/css3.svg' />
-                  <p>CSS3</p>
-                </div>
-
               </div>
-            </div>
-          </section>
+              <div className=' md:w-[45%] w-full'>
+                <BrowserView>
+                  <Atropos className="my-atropos "
+                    activeOffset={40}
+                    shadowScale={0.9}>
+                    <a href='https://weather-app-ivory-one.vercel.app/' target='_blank'><img className='border-2 border-black' alt='wheaterApp.jpg' src='/WAgif.gif' /></a>
+                  </Atropos>
+                </BrowserView>
+                <MobileView>
+                  <a href='https://weather-app-ivory-one.vercel.app/' target='_blank'><img className='border-2 border-black' alt='wheaterApp.jpg' src='/WAgif.gif' /></a>
+                </MobileView>
+              </div>
+            </section>
+
+            <section className=' flex md:flex-row flex-col w-full justify-center items-center  px-10 md:px-20'>
+              <div className='md:w-[45%] w-full'>
+                <BrowserView>
+                  <Atropos className="my-atropos "
+                    activeOffset={40}
+                    shadowScale={0.9}>
+                    <a href='https://mp01hosting.000webhostapp.com/' target='_blank'><img className='border-2 border-black' alt='university.gif' src='/university.gif' /></a>
+                  </Atropos>
+                </BrowserView>
+                <MobileView>
+                  <a href='https://mp01hosting.000webhostapp.com/' target='_blank'><img className='border-2 border-black' alt='university.gif' src='/university.gif' /></a>
+                </MobileView>
+              </div>
+              <div className=' md:visible collapse flex flex-col justify-around items-center md:px-8 md:py-[2%] w-0 h-0  md:w-[45%] md:gap-6'>
+                <p>App for a University with roles and login.</p>
+                <div className='grid grid-cols-4  w-full justify-center '>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='html5.svg' src='/html5.svg' />
+                    <p>HTML5</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='css3.svg' src='/css3.svg' />
+                    <p>CSS3</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between'>
+                    <img className='w-[50px]' alt='js.svg' src='/js.svg' />
+                    <p>JAVASCRIPT</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between pt-4'>
+                    <img className='w-[50px] ' alt='php8.svg' src='/php8.svg' />
+                    <p>PHP8</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between pt-4'>
+                    <img className='w-[50px] ' alt='tailwind.png' src='/tailwind.png' />
+                    <p>TAILWIND</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between pt-4'>
+                    <img className='w-[50px] ' alt='flowbite.png' src='/flowbite.png' />
+                    <p>FLOWBITE</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between pt-4'>
+                    <img className='w-[50px] ' alt='sql.svg' src='/sql.svg' />
+                    <p>SQL</p>
+                  </div>
+                  <div className='flex flex-col items-center justify-between pt-4'>
+                    <img className='w-[50px] ' alt='phpmyadmin.png' src='/phpmyadmin.png' />
+                    <p>PHPMYADMIN</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div className='bg-black mt-10 w-full h-[43px] flex justify-center items-center'>
+            <p className='text-white raleway'>A many more to come!</p>
+          </div>
         </div>
-      </div>
+        <footer className=' w-full bg-[#1a1a1a] flex flex-col justify-center items-center text-white py-10'>
+          <a href='#' className='flex flex-col justify-center items-center animate-bounce'>
+            <img className='w-4' alt='arrow.svg' src='/arrow.svg' />
+            <b className='mt-2 text-xs raleway'>BACK TO TOP</b>
+          </a>
+
+          <div className='mt-6 md:text-base text-xs flex md:flex-row flex-col text-center md:gap-0 gap-2 raleway'>
+            <b>@2023
+              <a href='https://www.linkedin.com/in/victoralexmorales/'> Víctor Alexander Morales Lucero. &#160;&#160;</a>
+            </b>
+            <p>All Rights Reserved.</p>
+          </div>
+        </footer>
+      </div >
     </>
   )
 }
