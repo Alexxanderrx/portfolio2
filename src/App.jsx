@@ -6,7 +6,7 @@ import { Navbar } from 'flowbite-react';
 import { BrowserView, MobileView } from 'react-device-detect';
 import Atropos from 'atropos/react';
 import 'atropos/css'
-import AtroposSquare from './components/atroposSquare';
+import AtroposSquare from './components/AtroposSquare';
 import { Transition } from '@headlessui/react';
 
 function App() {
